@@ -54,48 +54,57 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="tweetCell" rowHeight="122" id="blA-QV-xAK" customClass="TweetTableViewCell" customModule="Twitter" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="24.5" width="414" height="122"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="tweetCell" rowHeight="120" id="blA-QV-xAK" customClass="TweetTableViewCell" customModule="Twitter" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="24.5" width="414" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="blA-QV-xAK" id="uDf-fs-rAz">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="122"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="120"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Yvr-Zr-Ge3">
-                                            <rect key="frame" x="20" y="0.0" width="66" height="66"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DIx-xp-pQZ" userLabel="Profile Background Image View">
+                                            <rect key="frame" x="10" y="5" width="76" height="76"/>
+                                            <color key="backgroundColor" systemColor="systemGrayColor"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="66" id="PtV-DA-Whe"/>
+                                                <constraint firstAttribute="width" constant="76" id="Mvd-0u-pBb"/>
+                                                <constraint firstAttribute="height" constant="76" id="zXQ-76-HOm"/>
                                             </constraints>
                                         </imageView>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Yvr-Zr-Ge3">
+                                            <rect key="frame" x="10" y="10" width="76" height="66"/>
+                                        </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="john doe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6cr-Dw-Da9">
-                                            <rect key="frame" x="94" y="0.0" width="74" height="22"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="22" id="XaK-hg-cX7"/>
-                                            </constraints>
+                                            <rect key="frame" x="104" y="10" width="74" height="22"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sample Tweet" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="53p-xV-J2H">
-                                            <rect key="frame" x="94" y="30" width="300" height="81"/>
+                                            <rect key="frame" x="99" y="40" width="295" height="81"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="81" id="7y9-Fh-PUu"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="53p-xV-J2H" firstAttribute="bottom" secondItem="uDf-fs-rAz" secondAttribute="bottomMargin" id="3iP-sF-Jgh"/>
-                                        <constraint firstItem="53p-xV-J2H" firstAttribute="trailing" secondItem="uDf-fs-rAz" secondAttribute="trailingMargin" id="6WC-5c-BmL"/>
-                                        <constraint firstItem="6cr-Dw-Da9" firstAttribute="leading" secondItem="53p-xV-J2H" secondAttribute="leading" id="Cqz-Qt-W7E"/>
-                                        <constraint firstItem="Yvr-Zr-Ge3" firstAttribute="top" secondItem="uDf-fs-rAz" secondAttribute="topMargin" constant="-11" id="Qgn-9h-li9"/>
-                                        <constraint firstItem="Yvr-Zr-Ge3" firstAttribute="leading" secondItem="uDf-fs-rAz" secondAttribute="leadingMargin" id="Uux-Ad-lUq"/>
-                                        <constraint firstItem="53p-xV-J2H" firstAttribute="top" secondItem="6cr-Dw-Da9" secondAttribute="bottom" constant="8" id="aal-hb-Ieg"/>
-                                        <constraint firstItem="Yvr-Zr-Ge3" firstAttribute="top" secondItem="6cr-Dw-Da9" secondAttribute="top" id="m4V-1u-CFX"/>
-                                        <constraint firstItem="Yvr-Zr-Ge3" firstAttribute="bottom" secondItem="uDf-fs-rAz" secondAttribute="bottomMargin" constant="-45" id="ouO-lG-82X"/>
-                                        <constraint firstItem="6cr-Dw-Da9" firstAttribute="leading" secondItem="Yvr-Zr-Ge3" secondAttribute="trailing" constant="8" id="sW5-bD-U4c"/>
+                                        <constraint firstItem="Yvr-Zr-Ge3" firstAttribute="centerX" secondItem="DIx-xp-pQZ" secondAttribute="centerX" id="FWH-6N-Dz2"/>
+                                        <constraint firstItem="53p-xV-J2H" firstAttribute="trailing" secondItem="uDf-fs-rAz" secondAttribute="trailingMargin" id="IlZ-eB-mEK"/>
+                                        <constraint firstItem="DIx-xp-pQZ" firstAttribute="leading" secondItem="uDf-fs-rAz" secondAttribute="leadingMargin" constant="-10" id="KAw-d2-mEh"/>
+                                        <constraint firstItem="53p-xV-J2H" firstAttribute="leading" secondItem="Yvr-Zr-Ge3" secondAttribute="trailing" constant="13" id="SEW-bd-5X3"/>
+                                        <constraint firstItem="6cr-Dw-Da9" firstAttribute="leading" secondItem="DIx-xp-pQZ" secondAttribute="trailing" constant="18" id="U1h-oY-cRS"/>
+                                        <constraint firstItem="DIx-xp-pQZ" firstAttribute="trailing" secondItem="Yvr-Zr-Ge3" secondAttribute="trailing" id="UaI-U1-Vym"/>
+                                        <constraint firstItem="Yvr-Zr-Ge3" firstAttribute="top" secondItem="6cr-Dw-Da9" secondAttribute="top" id="UwR-uV-Ehh"/>
+                                        <constraint firstItem="DIx-xp-pQZ" firstAttribute="top" secondItem="uDf-fs-rAz" secondAttribute="top" constant="5" id="YHj-Et-6rT"/>
+                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="6cr-Dw-Da9" secondAttribute="trailing" constant="20" symbolic="YES" id="b39-vO-qpV"/>
+                                        <constraint firstItem="53p-xV-J2H" firstAttribute="top" secondItem="6cr-Dw-Da9" secondAttribute="bottom" constant="8" symbolic="YES" id="dWu-kX-enL"/>
+                                        <constraint firstItem="DIx-xp-pQZ" firstAttribute="centerY" secondItem="Yvr-Zr-Ge3" secondAttribute="centerY" id="hoo-5l-YAa"/>
+                                        <constraint firstItem="Yvr-Zr-Ge3" firstAttribute="top" secondItem="uDf-fs-rAz" secondAttribute="topMargin" constant="-1" id="zf1-hf-tVp"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="profileBackgroundImageView" destination="DIx-xp-pQZ" id="YzR-Nu-7UK"/>
                                     <outlet property="profileImageView" destination="Yvr-Zr-Ge3" id="UIq-Cf-Jix"/>
                                     <outlet property="tweetContentLabel" destination="53p-xV-J2H" id="3YN-bd-kWg"/>
                                     <outlet property="usernameLabel" destination="6cr-Dw-Da9" id="4aS-JT-vv6"/>
@@ -142,6 +151,9 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

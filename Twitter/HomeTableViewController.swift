@@ -41,7 +41,9 @@ class HomeTableViewController: UITableViewController {
 		let imageUrl = URL(string: (user["profile_image_url_https"] as? String)!)
 		let data = try? Data(contentsOf: imageUrl!)
 		if let imageData = data {
-			cell.profileImageView.image = UIImage(data: imageData)
+			cell.profileImageView.image = UIImage(data: imageData)?.circleMasked
+			cell.profileBackgroundImageView.backgroundColor = UIColor.systemGray
+			
 		}
 		
 		cell.usernameLabel.text = username
@@ -51,6 +53,9 @@ class HomeTableViewController: UITableViewController {
 	}
 	
 	// MARK: - Table view data source
+	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+		return 120
+	}
 
     override func numberOfSections(in tableView: UITableView) -> Int {
 		return 1
@@ -64,7 +69,7 @@ class HomeTableViewController: UITableViewController {
 	@objc func loadTweets() {
 		let myURL = "https://api.twitter.com/1.1/statuses/home_timeline.json"
 		numberOfTweets = 20
-		let myParams = ["count" : numberOfTweets!] as [String : Any]
+		let myParams = ["count" : numberOfTweets!]
 		TwitterAPICaller.client?.getDictionariesRequest(url: myURL, parameters: myParams, success: {
 			(tweets: [NSDictionary]) in
 			self.tweetArray.removeAll()
@@ -77,12 +82,14 @@ class HomeTableViewController: UITableViewController {
 			
 		}, failure: { (Error) in
 			print("Could not retreive tweets...")
+			print(Error.localizedDescription)
 		})
 	}
 	
 	func loadMoreTweets() {
 		let myURL = "https://api.twitter.com/1.1/statuses/home_timeline.json"
-		let myParams = ["count" : numberOfTweets += 20]
+		numberOfTweets += 20
+		let myParams = ["count" : numberOfTweets!]
 		TwitterAPICaller.client?.getDictionariesRequest(url: myURL, parameters: myParams, success: {
 			(tweets: [NSDictionary]) in
 			self.tweetArray.removeAll()
@@ -95,6 +102,7 @@ class HomeTableViewController: UITableViewController {
 			
 		}, failure: { (Error) in
 			print("Could not retreive tweets...")
+			print(Error.localizedDescription)
 		})
 	}
 	
@@ -105,3 +113,24 @@ class HomeTableViewController: UITableViewController {
 	}
 
 }
+extension UIImage {
+    var isPortrait:  Bool    { size.height > size.width }
+    var isLandscape: Bool    { size.width > size.height }
+    var breadth:     CGFloat { min(size.width, size.height) }
+    var breadthSize: CGSize  { .init(width: breadth, height: breadth) }
+    var breadthRect: CGRect  { .init(origin: .zero, size: breadthSize) }
+    var circleMasked: UIImage? {
+	   guard let cgImage = cgImage?
+		  .cropping(to: .init(origin: .init(x: isLandscape ? ((size.width-size.height)/2).rounded(.down) : 0,
+									 y: isPortrait  ? ((size.height-size.width)/2).rounded(.down) : 0),
+						  size: breadthSize)) else { return nil }
+	   let format = imageRendererFormat
+	   format.opaque = false
+	   return UIGraphicsImageRenderer(size: breadthSize, format: format).image { _ in
+		  UIBezierPath(ovalIn: breadthRect).addClip()
+		  UIImage(cgImage: cgImage, scale: format.scale, orientation: imageOrientation)
+		  .draw(in: .init(origin: .zero, size: breadthSize))
+	   }
+    }
+}
+
