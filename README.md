@@ -2,7 +2,7 @@
 
 **LitterTwitter** is a basic twitter app to read your tweets.
 
-Time spent: **X** hours spent in total
+Time spent: **5** hours spent in total
 
 ## User Stories
 
@@ -23,7 +23,7 @@ The following **bonus** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+![ezgif com-gif-maker(12)](https://user-images.githubusercontent.com/18653460/134826996-72ec2112-275a-49aa-abf5-400914fa2b75.gif)
 
 # Twitter - Part II
 
