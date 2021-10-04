@@ -17,12 +17,19 @@ class HomeTableViewController: UITableViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		loadTweets()
 		
 		myRefreshControl.addTarget(self, action: #selector(loadTweets), for: .valueChanged)
 		self.tableView.refreshControl = myRefreshControl
+		self.tableView.rowHeight = UITableView.automaticDimension
+		self.tableView.estimatedRowHeight = 100
 
     }
+
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
+
+		self.loadTweets()
+	}
 
 	@IBAction func onLogout(_ sender: Any) {
 		UserDefaults.standard.set(false, forKey: "userLoggedIn")
@@ -34,7 +41,9 @@ class HomeTableViewController: UITableViewController {
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "tweetCell", for: indexPath) as! TweetTableViewCell
 		let user = tweetArray[indexPath.row]["user"] as! NSDictionary
-		
+		let tweetDateString = tweetArray[indexPath.row]["created_at"] as! String
+
+		let handle = user["screen_name"] as!  String
 		let username = user["name"] as! String
 		let tweetContent = tweetArray[indexPath.row]["text"] as! String
 		
@@ -42,20 +51,20 @@ class HomeTableViewController: UITableViewController {
 		let data = try? Data(contentsOf: imageUrl!)
 		if let imageData = data {
 			cell.profileImageView.image = UIImage(data: imageData)?.circleMasked
-			cell.profileBackgroundImageView.backgroundColor = UIColor.systemGray
 			
 		}
-		
+		cell.elapsedTimeLabel.text = getRelativeTime(tweetDateString)
+		cell.handleLabel.text = "@\(handle)"
 		cell.usernameLabel.text = username
 		cell.tweetContentLabel.text = tweetContent
+		cell.setFavorite(tweetArray[indexPath.row]["favorited"] as! Bool)
+		cell.setRetweet(tweetArray[indexPath.row]["retweeted"] as! Bool)
+		cell.tweetID = tweetArray[indexPath.row]["id"] as! Int
 		
 		return cell
 	}
 	
 	// MARK: - Table view data source
-	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-		return 120
-	}
 
     override func numberOfSections(in tableView: UITableView) -> Int {
 		return 1
@@ -84,6 +93,49 @@ class HomeTableViewController: UITableViewController {
 			print("Could not retreive tweets...")
 			print(Error.localizedDescription)
 		})
+	}
+
+	func getRelativeTime(_ timeString:String) -> String {
+		let tweetDateFormatter = DateFormatter()
+		tweetDateFormatter.dateFormat = "E MMM d HH:mm:ss Z yyyy"
+		let tweetDate = tweetDateFormatter.date(from:timeString)!
+		let tweetCalendar = Calendar.current
+		let tweetComponents = tweetCalendar.dateComponents([.year, .month, .minute], from: tweetDate, to: Date())
+		let minutes = tweetComponents.minute!
+		let hours = minutes / 60
+		let days = hours / 24
+		let weeks = days / 7
+		let months = tweetComponents.month!
+		let years = tweetComponents.year!
+
+		if (minutes < 1) {
+			return "Just now"
+		} else if (minutes == 1) {
+			return "A minute ago"
+		} else if (hours < 1) {
+			return "\(minutes) minutes ago"
+		} else if (hours == 1) {
+			return "An hour ago"
+		} else if (days < 1) {
+			return "\(hours) hours ago"
+		} else if (days == 1) {
+			return "A day ago"
+		} else if (weeks < 1) {
+			return "\(days) days ago"
+		} else if (weeks == 1) {
+			return "A week ago"
+		} else if (months < 1) {
+			return "\(weeks) weeks ago"
+		} else if (months == 1) {
+			return "A month ago"
+		} else if (years < 1) {
+			return "\(months) months ago"
+		} else if (years == 1) {
+			return "A year ago"
+		} else {
+			return "\(years) ago"
+		}
+
 	}
 	
 	func loadMoreTweets() {

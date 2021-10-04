@@ -23,6 +23,7 @@
 		31960F7C79644B779611D0552ACC01FE /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 184765213831524EBBA56491EADF44BB /* MobileCoreServices.framework */; };
 		3398BC4D206731D89703595F10795EFE /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98BB627936995ED38ED1DBFF599BE48B /* Security.framework */; };
 		34C59561D41DB1818E9EFB7A127722A5 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F8849303638862D093CB1F1E421B808 /* AFURLResponseSerialization.m */; };
+		375A22F6270133F9001CAD2A /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 375A22F5270133F9001CAD2A /* CoreServices.framework */; };
 		38E1CFC28762FB7767BA826C200288CA /* AFImageDownloader.h in Headers */ = {isa = PBXBuildFile; fileRef = 9604A6E72D2914FB51C5EDC114E93191 /* AFImageDownloader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3C8180C2A38D7645D09A7BE4E09F73D7 /* UIKit+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 477DEE70480C9FFA9D23514BDA8C5AEC /* UIKit+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3CC69E433E546E88A6B3DE0E409143EB /* AFAutoPurgingImageCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 332C599D3E1EF8304D3026C91462BABE /* AFAutoPurgingImageCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -166,6 +167,7 @@
 		324EB7D217C3D0F16DFEF17F43CC4461 /* AlamofireImage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AlamofireImage.release.xcconfig; sourceTree = "<group>"; };
 		332C599D3E1EF8304D3026C91462BABE /* AFAutoPurgingImageCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFAutoPurgingImageCache.h; path = "UIKit+AFNetworking/AFAutoPurgingImageCache.h"; sourceTree = "<group>"; };
 		333E3DE30F48B34F8B1EA5A25AB6519E /* AFNetworking.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AFNetworking.debug.xcconfig; sourceTree = "<group>"; };
+		375A22F5270133F9001CAD2A /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
 		3A3072C01967FBF4A9BED19D6FEA8F4E /* NSDictionary+BDBOAuth1Manager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSDictionary+BDBOAuth1Manager.m"; path = "BDBOAuth1Manager/Categories/NSDictionary+BDBOAuth1Manager.m"; sourceTree = "<group>"; };
 		3B0CE44C594203DC850C37D3FD225DE0 /* UIProgressView+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIProgressView+AFNetworking.m"; path = "UIKit+AFNetworking/UIProgressView+AFNetworking.m"; sourceTree = "<group>"; };
 		3C5E4C8EC52EC678B08602456BD1D125 /* UIImage+AlamofireImage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIImage+AlamofireImage.swift"; path = "Source/UIImage+AlamofireImage.swift"; sourceTree = "<group>"; };
@@ -296,6 +298,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				016EA938D72C92730556DA866BD18A01 /* CoreGraphics.framework in Frameworks */,
+				375A22F6270133F9001CAD2A /* CoreServices.framework in Frameworks */,
 				FB3C22E17F0AF7F539C7763BA9A10E90 /* Foundation.framework in Frameworks */,
 				31960F7C79644B779611D0552ACC01FE /* MobileCoreServices.framework in Frameworks */,
 				3398BC4D206731D89703595F10795EFE /* Security.framework in Frameworks */,
@@ -503,6 +506,7 @@
 		B94D7768568A9992200DB461E8CF687F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				375A22F5270133F9001CAD2A /* CoreServices.framework */,
 				235F041C34907BACD96254FC56EAB1D0 /* iOS */,
 			);
 			name = Frameworks;
